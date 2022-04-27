@@ -45,6 +45,9 @@ rm -r ${FILE} temp
 sed -i '.bak' 's@../sonatype-work/nexus3@'$DATA_DIR'@g' $OPTIONS_FILE
 echo '-Djava.util.prefs.userRoot='$DATA_DIR'/javaprefs' >> $OPTIONS_FILE
 
+#The dir needs to already exist when setting the userRoot.
+mkdir $DATA_DIR'/javaprefs'
+
 ## check to see if data dir already exists.  If so we will nto update the nexus.properties file.
 if [ ! -d $ETC_DIR ] 
 then
